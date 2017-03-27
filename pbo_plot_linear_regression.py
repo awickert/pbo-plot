@@ -36,10 +36,6 @@ plt.tight_layout()
 ## ANALYZE ##
 #############
 
-# Least-squares regression in Pandas
-# from pandas.stats.api import ols # deprecated
-# Use Statsmodels
-#import statsmodels.formula.api as sm
 import statsmodels.api as sm
 
 # Create a new column of days since the start for regression
@@ -71,6 +67,11 @@ res_z = pbo_data['Vertical (mm)'] - \
        (fit_z.params.values[1] * pbo_data['date_delta'] \
         + fit_z.params.values[0])
 
+####################
+## PLOT RESIDUALS ##
+####################
+
+# This is nearly a direct copy of the figure plotting above.
 fig2 = plt.figure(figsize=(8,12))
 ax21 = fig2.add_subplot(3, 1, 1)
 ax21.plot(pbo_data.Date, res_x, 'o', color='white', zorder=1)
